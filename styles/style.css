@@ -57,10 +57,10 @@
 }
 
 .card__image-wrapper {
-  position: relative;
   width: 100%;
-  height: 100%;
-  display: block;
+  height: 696px;
+  position: relative;
+  overflow: hidden;
   border-top: 2px solid #000;
   border-bottom: 2px solid #000;
 }
@@ -69,6 +69,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 95% center;
   display: block;
   border-top: 2px solid #000;
   border-bottom: 2px solid #000;
@@ -91,7 +92,12 @@
   border: none;
   background: none;
 }
-
+@supports (-webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.7)) {
+  .card__label {
+    text-shadow: none;
+    -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.7);
+  }
+}
 .card__title {
   font-size: 18px;
   background-color: #fff;
@@ -188,11 +194,6 @@
   border-color: #000;
 }
 
-.like-icon {
-  width: 27px;
-  height: 24px;
-  display: block;
-}
 .button__text {
   font-family: var(--font-accent);
   font-size: 14px;
@@ -212,7 +213,7 @@
   justify-content: center;
   gap: 10px;
   z-index: 1;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
   cursor: pointer;
 }
 .button__icon {
@@ -224,9 +225,8 @@
 }
 /*Модальное окно*/
 .modal {
-  padding: 20px;
+  padding: 25px;
   width: 353px;
-  height: 191px;
   /* Центрирование */
   position: fixed; /* фиксированное положение относительно экрана */
   top: 50%; /* середина экрана по вертикали */
@@ -251,7 +251,10 @@
   width: 87px;
 }
 .modal__block-info {
-  gap: 20px;
+  gap: 18px;
+}
+.modal__block-action {
+  margin-top: 10px;
 }
 .modal__block p {
   font-family: var(--font-accent);
@@ -307,6 +310,7 @@
 @media (max-width: 375px) {
   .header {
     width: 375px;
+    padding: 120px 0;
   }
   .card {
     margin: 50px auto;
@@ -317,9 +321,17 @@
     height: 84px;
   }
 
-  .like-icon {
-    width: 28px;
-    height: 28px;
-    margin-right: 0;
+  .button__icon {
+    width: 27px;
+    height: 27px;
+  }
+  .card__bottom p {
+    padding-bottom: 28px;
+  }
+  .card__bottom-btn {
+    gap: 2px;
+  }
+  .card__image-wrapper {
+    height: 371px;
   }
 }
