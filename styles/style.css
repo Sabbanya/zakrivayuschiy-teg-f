@@ -23,7 +23,7 @@
 /*Хедер*/
 .header {
   background-color: #fff;
-  height: 368px;
+  padding: 130px 0;
   margin: 100px auto 48px;
   font-family: var(--font-accent);
   display: flex;
@@ -48,7 +48,6 @@
 .card {
   margin: 50px auto;
   border: 2px solid #000;
-  height: 956px;
   display: flex;
   flex-direction: column;
 }
@@ -97,6 +96,7 @@
   font-size: 18px;
   background-color: #fff;
   padding: 4px 10px;
+  font-variation-settings: "wght" var(--font-weight-heading);
 }
 
 .card__bottom {
@@ -109,6 +109,7 @@
 .card__bottom p {
   padding-bottom: 25px;
   font-size: 18px;
+  font-variation-settings: "wght" var(--font-weight-text);
 }
 
 /*Кнопки и иконки*/
@@ -120,7 +121,7 @@
 }
 
 /* Кнопка Like */
-.card__like-button {
+.card__like-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -130,7 +131,8 @@
   cursor: pointer;
   font-family: inherit;
   font-size: 16px;
-  padding: 0;
+  width: 130px; /* фиксированная ширина */
+  height: 38px;
 }
 
 /* Анимация кнопок */
@@ -167,8 +169,8 @@
 
 /* Кнопка с сердцем */
 .like__button {
-  width: 45px;
-  height: 45px;
+  width: 38px;
+  height: 38px;
   padding: 0;
   margin-right: 5px;
   border: 2px solid transparent;
@@ -191,48 +193,40 @@
   height: 24px;
   display: block;
 }
-
-.floppy__icon {
-  width: 21px;
-  height: 21px;
-  display: block;
-}
-
-.button__text,
-.modal__button-text {
+.button__text {
   font-family: var(--font-accent);
   font-size: 14px;
   user-select: none;
   border: 2px solid #000;
-  padding: 11.5px 35px;
   color: var(--button-text-color);
   position: relative;
   z-index: 1;
   mix-blend-mode: difference;
 }
 
-.button__footer {
-  border: none;
-  padding: 17px 2px;
-}
-
-.button__save {
+.card__icon-btn {
   display: flex;
   align-items: center;
+  width: 335px;
+  height: 55px;
   justify-content: center;
   gap: 10px;
-  border: 2px solid #000;
-  background-color: #fff;
-  margin-bottom: 100px;
-  width: 335px;
-  font-size: 14px;
+  z-index: 1;
+  margin-bottom: 50px;
   cursor: pointer;
 }
-
+.button__icon {
+  width: 21px;
+  height: 21px;
+  background-color: #000;
+  color: #fff;
+  mix-blend-mode: difference;
+}
 /*Модальное окно*/
 .modal {
-  padding: 30px;
+  padding: 20px;
   width: 353px;
+  height: 191px;
   /* Центрирование */
   position: fixed; /* фиксированное положение относительно экрана */
   top: 50%; /* середина экрана по вертикали */
@@ -244,29 +238,29 @@
   z-index: 1000; /* поверх остальных элементов */
 }
 
-.modal__column {
+.modal__block {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.modal__column:last-child {
+.modal__block:last-child {
   display: block;
-  margin-top: 30px;
 }
-
-.modal__column img {
-  width: 39px;
-  height: 39px;
+.modal__icon {
+  height: 87px;
+  width: 87px;
 }
-
-.modal__column p {
+.modal__block-info {
+  gap: 20px;
+}
+.modal__block p {
   font-family: var(--font-accent);
-  margin-left: 20px;
   line-height: 150%;
+  font-size: 14px;
   text-transform: uppercase;
 }
 
-.modal__column button {
+.modal__block button {
   width: 100%;
   font-family: var(--font-accent);
   text-transform: uppercase;
@@ -280,31 +274,32 @@
 }
 
 /* Фильтры для изображений*/
-.card__image-1 {
+
+.filter-grayscale {
   filter: grayscale(80%);
 }
-.card__image-2 {
+.filter-sepia {
   filter: sepia(60%);
 }
-.card__image-3 {
+.filter-contrast {
   filter: contrast(150%);
 }
-.card__image-4 {
+.filter-brightness {
   filter: brightness(120%);
 }
-.card__image-5 {
+.filter-saturate {
   filter: saturate(200%);
 }
-.card__image-6 {
+.filter-hue-rotate {
   filter: hue-rotate(90deg);
 }
-.card__image-7 {
+.filter-many {
   filter: grayscale(50%) contrast(120%) brightness(110%) sepia(30%);
 }
-.card__image-8 {
+.filter-invert {
   filter: invert(80%);
 }
-.card__image-9 {
+.filter-blur {
   filter: blur(2px);
 }
 
@@ -312,16 +307,14 @@
 @media (max-width: 375px) {
   .header {
     width: 375px;
-    height: 327px;
   }
   .card {
-    height: 371px;
-    margin: 315px auto;
+    margin: 50px auto;
   }
-  .button__save {
-    display: block;
-    justify-items: center;
-    padding: 17px 0;
+  .card__icon-btn {
+    flex-direction: column;
+    width: 306px;
+    height: 84px;
   }
 
   .like-icon {
